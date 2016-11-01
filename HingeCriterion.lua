@@ -16,9 +16,7 @@ function HingeCriterion:updateGradInput(input,gradOutput)
      
     local pwm = torch.gt(input[3],0):double()
     gradOutput = pwm:cmul(gradOutput:neg())
-    input[2][{{1,input[2]:size(1)}, 1}]:cmul(gradOutput)
-    input[2][{{1,input[2]:size(1)}, 2}]:cmul(gradOutput)
-    self.gradInput= (input[2])		
+    self.gradInput= (gradOutput * input[2])		
     
   return self.gradInput 
 end
