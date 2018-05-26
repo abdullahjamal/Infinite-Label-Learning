@@ -156,7 +156,7 @@ table.insert(inputs,inputs_l)
                   table.insert(inputs,out)
                   l = l + loss1
                   local dl_dv3 = crit:backward(inputs,inputs_y)
-                  model:zeroGradParameters()
+                  --model:zeroGradParameters()
                   model:backward(inputs_x,dl_dv3)
                   trainloss = trainloss+l
                  return l,gradParameters
